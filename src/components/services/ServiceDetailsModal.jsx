@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaStar, FaTimes, FaClock, FaMapMarkerAlt, FaTag, FaCheck, FaUserAlt } from 'react-icons/fa';
 import LazyImage from '../common/LazyImage';
 import apiService from '../../services/api';
+import serviceRelax from '../../assets/images/service-relax.jpg';
 
 const ServiceDetailsModal = ({ serviceId, onClose }) => {
   const [service, setService] = useState(null);
@@ -42,7 +43,7 @@ const ServiceDetailsModal = ({ serviceId, onClose }) => {
       const fallbackService = {
         id: id,
         title: `Service ${id}`,
-        image: 'src/assets/images/service-relax.jpg',
+        image: serviceRelax,
         rating: 4.5,
         reviews: 50,
         originalPrice: 100,
@@ -164,7 +165,7 @@ const ServiceDetailsModal = ({ serviceId, onClose }) => {
     const fallbackService = {
       id: numId,
       title: `Service ${numId}`,
-      image: 'src/assets/images/service-relax.jpg',
+      image: serviceRelax,
       rating: 4.5,
       reviews: 50,
       originalPrice: 100,

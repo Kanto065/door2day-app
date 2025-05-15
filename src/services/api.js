@@ -1,6 +1,24 @@
 // Base API URL - in a real app, this would point to your backend server
 const API_URL = 'https://api.example.com';
 
+// Import images for mock data
+import serviceCleaning from '../assets/images/service-cleaning.jpg';
+import serviceSalon from '../assets/images/service-salon.jpg';
+import serviceHealthcare from '../assets/images/service-healthcare.jpg';
+import serviceAC from '../assets/images/service-ac.jpg';
+import serviceRelax from '../assets/images/service-relax.jpg';
+import serviceNails from '../assets/images/service-nails.jpg';
+import servicePamper from '../assets/images/service-pamper.jpg';
+import serviceRevive from '../assets/images/service-revive.jpg';
+import trendingSpa from '../assets/images/trending-spa.jpg';
+import trendingCleaning from '../assets/images/trending-cleaning.jpg';
+import trendingAC from '../assets/images/trending-ac.jpg';
+import trendingPro from '../assets/images/trending-pro.jpg';
+import newSalon from '../assets/images/new-salon.jpg';
+import newBeauty from '../assets/images/new-beauty.jpg';
+import newHaven from '../assets/images/new-haven.jpg';
+import newRefreshed from '../assets/images/new-refreshed.jpg';
+
 // Helper function for making API requests
 const fetchAPI = async (endpoint, options = {}) => {
   const url = `${API_URL}${endpoint}`;
@@ -57,25 +75,25 @@ const mockServices = [
   {
     id: 1,
     title: 'General Cleaning',
-    image: '/src/assets/images/service-cleaning.jpg',
+    image: serviceCleaning,
     link: '/services/cleaning'
   },
   {
     id: 2,
     title: 'Salon & Spa at Home',
-    image: '/src/assets/images/service-salon.jpg',
+    image: serviceSalon,
     link: '/services/salon'
   },
   {
     id: 3,
     title: 'Healthcare Home',
-    image: '/src/assets/images/service-healthcare.jpg',
+    image: serviceHealthcare,
     link: '/services/healthcare'
   },
   {
     id: 4,
     title: 'AC Cleaning',
-    image: '/src/assets/images/service-ac.jpg',
+    image: serviceAC,
     link: '/services/ac-cleaning'
   }
 ];
@@ -84,7 +102,7 @@ const mockTopPicks = [
   {
     id: 101,
     title: 'Relax and Rejuvenate: Salon & Spa',
-    image: '/src/assets/images/service-relax.jpg',
+    image: serviceRelax,
     rating: 4.8,
     reviews: 76,
     originalPrice: 120,
@@ -94,7 +112,7 @@ const mockTopPicks = [
   {
     id: 102,
     title: 'Flawless Nails, Right Fingertips',
-    image: '/src/assets/images/service-nails.jpg',
+    image: serviceNails,
     rating: 4.7,
     reviews: 58,
     originalPrice: 80,
@@ -104,7 +122,7 @@ const mockTopPicks = [
   {
     id: 103,
     title: 'Pamper Yourself: Salon & Spa',
-    image: '/src/assets/images/service-pamper.jpg',
+    image: servicePamper,
     rating: 4.9,
     reviews: 84,
     originalPrice: 150,
@@ -114,7 +132,7 @@ const mockTopPicks = [
   {
     id: 104,
     title: 'Revive at Home: Expert Salon',
-    image: '/src/assets/images/service-revive.jpg',
+    image: serviceRevive,
     rating: 4.8,
     reviews: 92,
     originalPrice: 130,
@@ -127,7 +145,7 @@ const mockTrending = [
   {
     id: 201,
     title: 'Tranquility Delivered: Salon & Spa',
-    image: '/src/assets/images/trending-spa.jpg',
+    image: trendingSpa,
     rating: 4.8,
     reviews: 76,
     originalPrice: 120,
@@ -137,7 +155,7 @@ const mockTrending = [
   {
     id: 202,
     title: 'Home Cleaning for AC Cleaning',
-    image: '/src/assets/images/trending-cleaning.jpg',
+    image: trendingCleaning,
     rating: 4.7,
     reviews: 58,
     originalPrice: 80,
@@ -147,7 +165,7 @@ const mockTrending = [
   {
     id: 203,
     title: 'Home Cleaning for AC Cleaning',
-    image: '/src/assets/images/trending-ac.jpg',
+    image: trendingAC,
     rating: 4.9,
     reviews: 84,
     originalPrice: 150,
@@ -157,7 +175,7 @@ const mockTrending = [
   {
     id: 204,
     title: 'Clean From Home: Professional',
-    image: '/src/assets/images/trending-pro.jpg',
+    image: trendingPro,
     rating: 4.8,
     reviews: 92,
     originalPrice: 130,
@@ -170,7 +188,7 @@ const mockNewServices = [
   {
     id: 301,
     title: 'Home Salon & Spa Services',
-    image: '/src/assets/images/new-salon.jpg',
+    image: newSalon,
     rating: 4.8,
     reviews: 76,
     originalPrice: 120,
@@ -180,7 +198,7 @@ const mockNewServices = [
   {
     id: 302,
     title: 'Feel Beautiful, Stay Home! Salon',
-    image: '/src/assets/images/new-beauty.jpg',
+    image: newBeauty,
     rating: 4.7,
     reviews: 58,
     originalPrice: 80,
@@ -190,7 +208,7 @@ const mockNewServices = [
   {
     id: 303,
     title: 'Beauty Haven: Salon & Spa',
-    image: '/src/assets/images/new-haven.jpg',
+    image: newHaven,
     rating: 4.9,
     reviews: 84,
     originalPrice: 150,
@@ -200,7 +218,7 @@ const mockNewServices = [
   {
     id: 304,
     title: 'Refreshed: Home Salon & Spa',
-    image: '/src/assets/images/new-refreshed.jpg',
+    image: newRefreshed,
     rating: 4.8,
     reviews: 92,
     originalPrice: 130,
