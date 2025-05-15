@@ -50,12 +50,12 @@ const Header = () => {
     // Add event listener when menu is open
     if (userMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-    }
 
-    // Clean up
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+      // Clean up when menu is closed or component unmounts
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
   }, [userMenuOpen]);
 
   const handleSearch = (e) => {
@@ -80,8 +80,8 @@ const Header = () => {
   };
 
   const handleLogin = () => {
-    console.log('Login button clicked, navigating to login page');
-    navigate('/login');
+    console.log('Login button clicked, opening auth modal');
+    openAuthModal('login');
   };
 
   const handleLogout = () => {
@@ -195,17 +195,12 @@ const Header = () => {
               </button>
             )
           ) : (
-            <a
-              href="/login"
-              onClick={(e) => {
-                e.preventDefault();
-                console.log('Login link clicked');
-                handleLogin();
-              }}
-              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition inline-block"
+            <button
+              onClick={handleLogin}
+              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition"
             >
               Log in
-            </a>
+            </button>
           )}
         </nav>
 
@@ -276,18 +271,15 @@ const Header = () => {
                 </button>
               </>
             ) : (
-              <a
-                href="/login"
-                onClick={(e) => {
-                  e.preventDefault();
-                  console.log('Mobile login link clicked');
+              <button
+                onClick={() => {
                   handleLogin();
                   setMobileMenuOpen(false);
                 }}
-                className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition w-full text-left block"
+                className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition w-full text-left"
               >
                 Log in
-              </a>
+              </button>
             )}
           </nav>
         </div>

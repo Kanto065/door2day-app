@@ -3,7 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const LoginForm = () => {
-  const { login, toggleAuthMode } = useAuth();
+  const { login, toggleAuthMode, closeAuthModal } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -25,6 +25,9 @@ const LoginForm = () => {
       const result = await login(email, password);
       if (!result.success) {
         setError(result.error || 'Invalid email or password');
+      } else {
+        // Close the modal on successful login
+        closeAuthModal();
       }
     } catch (err) {
       setError('An error occurred. Please try again.');
@@ -37,13 +40,13 @@ const LoginForm = () => {
   return (
     <div className="w-full max-w-md mx-auto">
       <h2 className="text-2xl font-bold text-center mb-6">Log In to Door2Day</h2>
-      
+
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
           {error}
         </div>
       )}
-      
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="email" className="block text-gray-700 mb-1">Email</label>
@@ -61,7 +64,7 @@ const LoginForm = () => {
             />
           </div>
         </div>
-        
+
         <div>
           <label htmlFor="password" className="block text-gray-700 mb-1">Password</label>
           <div className="relative">
@@ -87,7 +90,7 @@ const LoginForm = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <input
@@ -105,7 +108,7 @@ const LoginForm = () => {
             </a>
           </div>
         </div>
-        
+
         <button
           type="submit"
           disabled={loading}
@@ -114,7 +117,7 @@ const LoginForm = () => {
           {loading ? 'Logging in...' : 'Log In'}
         </button>
       </form>
-      
+
       <div className="mt-6 text-center">
         <p className="text-sm text-gray-600">
           Don't have an account?{' '}
@@ -126,7 +129,7 @@ const LoginForm = () => {
           </button>
         </p>
       </div>
-      
+
       <div className="mt-6">
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
@@ -136,7 +139,7 @@ const LoginForm = () => {
             <span className="px-2 bg-white text-gray-500">Or continue with</span>
           </div>
         </div>
-        
+
         <div className="mt-6 grid grid-cols-2 gap-3">
           <button
             type="button"

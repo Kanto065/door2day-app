@@ -300,7 +300,7 @@ const ServiceDetailsModal = ({ serviceId, onClose }) => {
                 <div className="flex items-center text-yellow-400">
                   <FaStar />
                 </div>
-                <span className="text-white ml-1">{service.rating} • {service.reviews.count} reviews</span>
+                <span className="text-white ml-1">{service.rating} • {service.reviews} reviews</span>
               </div>
             )}
           </div>

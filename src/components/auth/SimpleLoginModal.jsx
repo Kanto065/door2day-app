@@ -3,7 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { FaTimes, FaEnvelope, FaLock } from 'react-icons/fa';
 
 const SimpleLoginModal = () => {
-  const { login, closeAuthModal } = useAuth();
+  const { login, closeAuthModal, toggleAuthMode } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -25,6 +25,7 @@ const SimpleLoginModal = () => {
       if (!result.success) {
         setError(result.error || 'Invalid email or password');
       } else {
+        // Close the modal on successful login
         closeAuthModal();
       }
     } catch (err) {
@@ -36,17 +37,17 @@ const SimpleLoginModal = () => {
   };
 
   return (
-    <div 
+    <div
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999]"
       onClick={() => closeAuthModal()}
     >
-      <div 
+      <div
         className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Log In</h2>
-          <button 
+          <button
             onClick={() => closeAuthModal()}
             className="text-gray-500 hover:text-gray-700"
           >
@@ -125,7 +126,10 @@ const SimpleLoginModal = () => {
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             Don't have an account?{' '}
-            <button className="text-primary hover:text-primary/80 font-medium">
+            <button
+              onClick={toggleAuthMode}
+              className="text-primary hover:text-primary/80 font-medium"
+            >
               Sign up
             </button>
           </p>
