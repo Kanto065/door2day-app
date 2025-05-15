@@ -20,28 +20,30 @@ const ServiceCard = ({ id, title, image, rating, reviews, originalPrice, discoun
 
   return (
     <div
-      className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition cursor-pointer"
+      className="group cursor-pointer"
       onClick={handleClick}
     >
-      <div className="aspect-w-16 aspect-h-9">
-        <LazyImage
-          src={image}
-          alt={title}
-          className="w-full h-48 object-cover"
-        />
-      </div>
-      <div className="p-4">
-        <h3 className="font-medium text-gray-800 mb-2">{title}</h3>
-        <div className="flex items-center mb-2">
-          <div className="flex items-center text-yellow-400 mr-1">
-            <FaStar />
-          </div>
-          <span className="text-sm text-gray-600">{rating} • {reviews} reviews</span>
+      <div className="bg-white rounded-lg overflow-hidden shadow-md transition-transform group-hover:scale-105">
+        <div className="aspect-w-16 aspect-h-9">
+          <LazyImage
+            src={image}
+            alt={title}
+            className="w-full h-48 object-cover"
+          />
         </div>
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-gray-500 line-through text-sm mr-2">${originalPrice}</span>
-            <span className="text-primary font-semibold">${discountedPrice}</span>
+        <div className="p-4">
+          <h3 className="font-medium text-gray-800 mb-2">{title}</h3>
+          <div className="flex items-center mb-2">
+            <div className="flex items-center text-yellow-400 mr-1">
+              <FaStar />
+            </div>
+            <span className="text-sm text-gray-600">{rating} • {reviews} reviews</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="text-gray-500 line-through text-sm mr-2">${originalPrice}</span>
+              <span className="text-primary font-semibold">${discountedPrice}</span>
+            </div>
           </div>
         </div>
       </div>
