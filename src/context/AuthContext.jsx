@@ -31,7 +31,14 @@ export const AuthProvider = ({ children }) => {
     try {
       // In a real app, this would be an API call
       // For demo purposes, we'll simulate a successful login
-      const userData = { id: 1, name: 'Demo User', email };
+      // Check if this is an admin login (for demo purposes, admin@door2day.com)
+      const isAdmin = email.toLowerCase() === 'admin@door2day.com';
+      const userData = {
+        id: 1,
+        name: isAdmin ? 'Admin' : 'User',
+        email,
+        isAdmin
+      };
       setUser(userData);
       setIsAuthenticated(true);
       localStorage.setItem('door2day_user', JSON.stringify(userData));
@@ -62,12 +69,16 @@ export const AuthProvider = ({ children }) => {
   };
 
   const openAuthModal = (mode = 'login') => {
+    console.log('AuthContext - openAuthModal called with mode:', mode);
     setAuthMode(mode);
     setShowAuthModal(true);
+    console.log('AuthContext - showAuthModal set to true');
   };
 
   const closeAuthModal = () => {
+    console.log('AuthContext - closeAuthModal called');
     setShowAuthModal(false);
+    console.log('AuthContext - showAuthModal set to false');
   };
 
   const toggleAuthMode = () => {

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { FaUser, FaSignOutAlt, FaBars, FaTimes, FaSearch, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaUser, FaSignOutAlt, FaBars, FaTimes, FaSearch, FaMapMarkerAlt, FaChevronDown, FaPlus } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext';
 
 const Header = () => {
@@ -13,6 +13,9 @@ const Header = () => {
   const [searchLocation, setSearchLocation] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+
+  // Ref for the dropdown menu
+  const userMenuRef = useRef(null);
 
   // Check if we're on the home page
   const isHomePage = location.pathname === '/';
@@ -36,6 +39,25 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomePage]);
 
+  // Handle click outside to close user menu
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setUserMenuOpen(false);
+      }
+    };
+
+    // Add event listener when menu is open
+    if (userMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Clean up
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [userMenuOpen]);
+
   const handleSearch = (e) => {
     e.preventDefault();
 
@@ -58,7 +80,8 @@ const Header = () => {
   };
 
   const handleLogin = () => {
-    openAuthModal('login');
+    console.log('Login button clicked, navigating to login page');
+    navigate('/login');
   };
 
   const handleLogout = () => {
@@ -129,42 +152,60 @@ const Header = () => {
             Book a Service
           </Link>
 
-          {isAuthenticated ? (
-            <div className="relative">
-              <button
-                onClick={toggleUserMenu}
-                className="flex items-center space-x-2 text-gray-700 hover:text-primary focus:outline-none"
-              >
-                <span className="font-medium">{user?.name || 'User'}</span>
-                <FaChevronDown className="h-3 w-3" />
-              </button>
+          {/* Admin-only Create Services link */}
+          {isAuthenticated && user?.isAdmin && (
+            <Link to="/admin/services" className="text-gray-700 hover:text-primary flex items-center">
+              <FaPlus className="mr-1 h-3 w-3" />
+              <span>Create Services</span>
+            </Link>
+          )}
 
-              {userMenuOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
-                  <Link to="/profile" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    <FaUser className="mr-2" />
-                    <span>My Profile</span>
-                  </Link>
-                  <Link to="/bookings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    My Bookings
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    <FaSignOutAlt className="mr-2" />
-                    <span>Log out</span>
-                  </button>
-                </div>
-              )}
-            </div>
+          {isAuthenticated ? (
+            user?.isAdmin ? (
+              // Admin user with dropdown
+              <div className="relative" ref={userMenuRef}>
+                <button
+                  onClick={toggleUserMenu}
+                  className="flex items-center space-x-2 text-gray-700 hover:text-primary focus:outline-none"
+                >
+                  <span className="font-medium">{user?.name}</span>
+                  <FaChevronDown className="h-3 w-3" />
+                </button>
+
+                {userMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      <FaSignOutAlt className="mr-2" />
+                      <span>Log out</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              // Regular user with direct logout button
+              <button
+                onClick={handleLogout}
+                className="flex items-center text-gray-700 hover:text-primary"
+              >
+                <FaSignOutAlt className="mr-2" />
+                <span>Log out</span>
+              </button>
+            )
           ) : (
-            <button
-              onClick={handleLogin}
-              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition"
+            <a
+              href="/login"
+              onClick={(e) => {
+                e.preventDefault();
+                console.log('Login link clicked');
+                handleLogin();
+              }}
+              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition inline-block"
             >
               Log in
-            </button>
+            </a>
           )}
         </nav>
 
@@ -212,40 +253,41 @@ const Header = () => {
 
             {isAuthenticated ? (
               <>
-                <Link
-                  to="/profile"
-                  className="text-gray-700 hover:text-primary py-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  My Profile
-                </Link>
-                <Link
-                  to="/bookings"
-                  className="text-gray-700 hover:text-primary py-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  My Bookings
-                </Link>
+                {/* Only show admin links for admin users */}
+                {user?.isAdmin && (
+                  <Link
+                    to="/admin/services"
+                    className="text-gray-700 hover:text-primary py-2 flex items-center"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <FaPlus className="mr-2" />
+                    <span>Create Services</span>
+                  </Link>
+                )}
                 <button
                   onClick={() => {
                     handleLogout();
                     setMobileMenuOpen(false);
                   }}
-                  className="text-left text-gray-700 hover:text-primary py-2"
+                  className="text-left text-gray-700 hover:text-primary py-2 flex items-center"
                 >
-                  Log out
+                  <FaSignOutAlt className="mr-2" />
+                  <span>Log out</span>
                 </button>
               </>
             ) : (
-              <button
-                onClick={() => {
+              <a
+                href="/login"
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log('Mobile login link clicked');
                   handleLogin();
                   setMobileMenuOpen(false);
                 }}
-                className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition w-full text-left"
+                className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition w-full text-left block"
               >
                 Log in
-              </button>
+              </a>
             )}
           </nav>
         </div>

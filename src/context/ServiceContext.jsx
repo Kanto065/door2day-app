@@ -16,6 +16,7 @@ export const useService = () => {
 // Service provider component
 export const ServiceProvider = ({ children }) => {
   const [selectedServiceId, setSelectedServiceId] = useState(null);
+  const [services, setServices] = useState([]);
 
   const openServiceDetails = (id) => {
     console.log('Opening service details for ID:', id);
@@ -28,10 +29,28 @@ export const ServiceProvider = ({ children }) => {
     setSelectedServiceId(null);
   };
 
+  const addService = (service) => {
+    setServices([...services, service]);
+  };
+
+  const updateService = (updatedService) => {
+    setServices(services.map(service =>
+      service.id === updatedService.id ? updatedService : service
+    ));
+  };
+
+  const deleteService = (id) => {
+    setServices(services.filter(service => service.id !== id));
+  };
+
   // Create the context value
   const contextValue = {
+    services,
     openServiceDetails,
-    closeServiceDetails
+    closeServiceDetails,
+    addService,
+    updateService,
+    deleteService
   };
 
   return (
