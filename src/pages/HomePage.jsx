@@ -7,6 +7,7 @@ import TopPicks from '../components/home/TopPicks';
 import Stats from '../components/home/Stats';
 import Trending from '../components/home/Trending';
 import NewServices from '../components/home/NewServices';
+import HappyCustomers from '../components/home/HappyCustomers';
 import AppDownload from '../components/home/AppDownload';
 
 const HomePage = () => {
@@ -24,6 +25,7 @@ const HomePage = () => {
         <Stats />
         <Trending />
         <NewServices />
+        <HappyCustomers />
         <AppDownload />
       </main>
       <Footer />

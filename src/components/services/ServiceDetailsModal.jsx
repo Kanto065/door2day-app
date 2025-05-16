@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaStar, FaTimes, FaClock, FaMapMarkerAlt, FaTag, FaCheck, FaUserAlt } from 'react-icons/fa';
 import LazyImage from '../common/LazyImage';
+import LazyVideo from '../common/LazyVideo';
 import apiService from '../../services/api';
 import serviceRelax from '../../assets/images/service-relax.jpg';
 
@@ -284,15 +285,24 @@ const ServiceDetailsModal = ({ serviceId, onClose }) => {
           <FaTimes className="w-5 h-5 text-gray-700" />
         </button>
 
-        {/* Service image */}
+        {/* Service media (image or video) */}
         <div className="relative h-64 md:h-80">
-          <LazyImage
-            src={typeof service.image === 'string' && service.image.startsWith('/')
-              ? service.image.substring(1) // Remove leading slash if it exists
-              : service.image}
-            alt={service.title}
-            className="w-full h-full object-cover"
-          />
+          {service.mediaType === 'video' ? (
+            <div className="w-full h-full bg-black">
+              <LazyVideo
+                src={service.image}
+                className="w-full h-full"
+              />
+            </div>
+          ) : (
+            <LazyImage
+              src={typeof service.image === 'string' && service.image.startsWith('/')
+                ? service.image.substring(1) // Remove leading slash if it exists
+                : service.image}
+              alt={service.title}
+              className="w-full h-full object-cover"
+            />
+          )}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
             <h1 className="text-white text-2xl md:text-3xl font-bold">{service.title}</h1>
             {service.rating && (

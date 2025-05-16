@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import LazyImage from '../components/common/LazyImage';
+import LazyVideo from '../components/common/LazyVideo';
 import { FaStar } from 'react-icons/fa';
 import apiService from '../services/api';
 import { useService } from '../context/ServiceContext';
@@ -18,7 +19,7 @@ import newBeauty from '../assets/images/new-beauty.jpg';
 import newHaven from '../assets/images/new-haven.jpg';
 import newRefreshed from '../assets/images/new-refreshed.jpg';
 
-const ServiceCard = ({ id, title, image, rating, reviews, originalPrice, discountedPrice, link }) => {
+const ServiceCard = ({ id, title, image, mediaType, rating, reviews, originalPrice, discountedPrice, link }) => {
   const { openServiceDetails } = useService();
 
   const handleClick = () => {
@@ -33,11 +34,20 @@ const ServiceCard = ({ id, title, image, rating, reviews, originalPrice, discoun
     >
       <div className="bg-white rounded-lg overflow-hidden shadow-md transition-transform group-hover:scale-105">
         <div className="aspect-w-16 aspect-h-9">
-          <LazyImage
-            src={image}
-            alt={title}
-            className="w-full h-48 object-cover"
-          />
+          {mediaType === 'video' ? (
+            <div className="w-full h-48 bg-black">
+              <LazyVideo
+                src={image}
+                className="w-full h-full"
+              />
+            </div>
+          ) : (
+            <LazyImage
+              src={image}
+              alt={title}
+              className="w-full h-48 object-cover"
+            />
+          )}
         </div>
         <div className="p-4">
           <h3 className="font-medium text-gray-800 mb-2">{title}</h3>

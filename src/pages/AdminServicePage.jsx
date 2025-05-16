@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaPlus, FaEdit, FaTrash, FaSave, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaEdit, FaTrash, FaSave, FaTimes, FaImage, FaVideo } from 'react-icons/fa';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { useAuth } from '../context/AuthContext';
 import apiService from '../services/api';
+import LazyVideo from '../components/common/LazyVideo';
 
 const AdminServicePage = () => {
   const { user, isAuthenticated } = useAuth();
@@ -21,9 +22,11 @@ const AdminServicePage = () => {
     professionals: '',
     includes: '',
     excludes: '',
-    image: null
+    image: null,
+    mediaType: null
   });
-  const [imagePreview, setImagePreview] = useState(null);
+  const [mediaPreview, setMediaPreview] = useState(null);
+  const [mediaType, setMediaType] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -70,18 +73,24 @@ const AdminServicePage = () => {
     });
   };
 
-  const handleImageChange = (e) => {
+  const handleMediaChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      // Determine if the file is an image or video
+      const fileType = file.type.split('/')[0];
+
       setFormData({
         ...formData,
-        image: file
+        image: file,
+        mediaType: fileType
       });
+
+      setMediaType(fileType);
 
       // Create a preview URL
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImagePreview(reader.result);
+        setMediaPreview(reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -93,7 +102,7 @@ const AdminServicePage = () => {
     setSuccess('');
 
     // Validate form
-    if (!formData.title || !formData.category || !formData.description || 
+    if (!formData.title || !formData.category || !formData.description ||
         !formData.originalPrice || !formData.discountedPrice) {
       setError('Please fill in all required fields');
       return;
@@ -112,14 +121,15 @@ const AdminServicePage = () => {
         professionals: formData.professionals.split(',').map(item => item.trim()),
         includes: formData.includes.split(',').map(item => item.trim()),
         excludes: formData.excludes.split(',').map(item => item.trim()),
-        image: imagePreview || 'https://via.placeholder.com/300x200?text=Service+Image',
+        image: mediaPreview || 'https://via.placeholder.com/300x200?text=Service+Image',
+        mediaType: mediaType || 'image',
         rating: 5.0,
         reviews: 0
       };
 
       if (editingId) {
         // Update existing service
-        setServices(services.map(service => 
+        setServices(services.map(service =>
           service.id === editingId ? newService : service
         ));
         setSuccess('Service updated successfully!');
@@ -149,9 +159,11 @@ const AdminServicePage = () => {
       professionals: Array.isArray(service.professionals) ? service.professionals.join(', ') : '',
       includes: Array.isArray(service.includes) ? service.includes.join(', ') : '',
       excludes: Array.isArray(service.excludes) ? service.excludes.join(', ') : '',
-      image: null
+      image: null,
+      mediaType: service.mediaType || 'image'
     });
-    setImagePreview(typeof service.image === 'string' ? service.image : null);
+    setMediaPreview(typeof service.image === 'string' ? service.image : null);
+    setMediaType(service.mediaType || 'image');
     window.scrollTo(0, 0);
   };
 
@@ -174,9 +186,11 @@ const AdminServicePage = () => {
       professionals: '',
       includes: '',
       excludes: '',
-      image: null
+      image: null,
+      mediaType: null
     });
-    setImagePreview(null);
+    setMediaPreview(null);
+    setMediaType(null);
     setEditingId(null);
   };
 
@@ -335,18 +349,30 @@ const AdminServicePage = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="image" className="block text-gray-700 mb-1">Service Image</label>
+                  <label htmlFor="image" className="block text-gray-700 mb-1">Service Media (Image or Video)</label>
+                  <div className="flex items-center space-x-2 mb-2">
+                    <FaImage className="text-gray-500" />
+                    <span className="text-sm text-gray-500">Images</span>
+                    <FaVideo className="text-gray-500 ml-4" />
+                    <span className="text-sm text-gray-500">Videos</span>
+                  </div>
                   <input
                     type="file"
                     id="image"
                     name="image"
-                    onChange={handleImageChange}
-                    accept="image/*"
+                    onChange={handleMediaChange}
+                    accept="image/*,video/*"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
                   />
-                  {imagePreview && (
+                  {mediaPreview && (
                     <div className="mt-2">
-                      <img src={imagePreview} alt="Preview" className="h-32 object-cover rounded-md" />
+                      {mediaType === 'image' ? (
+                        <img src={mediaPreview} alt="Preview" className="h-32 object-cover rounded-md" />
+                      ) : mediaType === 'video' ? (
+                        <div className="h-48 rounded-md overflow-hidden">
+                          <LazyVideo src={mediaPreview} className="w-full h-full" />
+                        </div>
+                      ) : null}
                     </div>
                   )}
                 </div>
