@@ -8,6 +8,7 @@ import ContactPage from './pages/ContactPage';
 import AllServicesPage from './pages/AllServicesPage';
 import AdminServicePage from './pages/AdminServicePage';
 import AuthModal from './components/auth/AuthModal';
+import WhatsAppButton from './components/common/WhatsAppButton';
 
 function AppContent() {
   const { showAuthModal, openAuthModal } = useAuth();
@@ -38,6 +39,8 @@ function AppContent() {
       </Routes>
       {/* Use AuthModal for login popup */}
       {showAuthModal && <AuthModal />}
+      {/* WhatsApp Chat Button */}
+      <WhatsAppButton phoneNumber="70777467" />
     </>
   );
 }
