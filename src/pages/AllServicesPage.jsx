@@ -18,6 +18,7 @@ import newSalon from '../assets/images/new-salon.jpg';
 import newBeauty from '../assets/images/new-beauty.jpg';
 import newHaven from '../assets/images/new-haven.jpg';
 import newRefreshed from '../assets/images/new-refreshed.jpg';
+import { formatPrice } from '../utils/currency';
 
 const ServiceCard = ({ id, title, image, mediaType, rating, reviews, originalPrice, discountedPrice, link }) => {
   const { openServiceDetails } = useService();
@@ -63,8 +64,8 @@ const ServiceCard = ({ id, title, image, mediaType, rating, reviews, originalPri
             <div>
               {originalPrice && (
                 <>
-                  <span className="text-gray-500 line-through text-sm mr-2">${originalPrice}</span>
-                  <span className="text-primary font-semibold">${discountedPrice}</span>
+                  <span className="text-gray-500 line-through text-sm mr-2">{formatPrice(originalPrice)}</span>
+                  <span className="text-primary font-semibold">{formatPrice(discountedPrice)}</span>
                 </>
               )}
             </div>
