@@ -93,10 +93,8 @@ const Header = () => {
     <header className="bg-white shadow-sm py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Link to="/" className="text-2xl font-bold text-teal-600 flex items-center">
-            <span className="text-primary">door</span>
-            <span className="text-secondary">2</span>
-            <span className="text-primary">day</span>
+          <Link to="/" className="text-2xl font-bold text-teal-600 flex items-center gap-2">
+            <img src="/logo.jpeg" alt="Sofa Upholstery Logo" className="h-12 w-auto" />
           </Link>
         </div>
 

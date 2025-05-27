@@ -6,13 +6,13 @@ const HappyCustomers = () => {
   const testimonials = [
     {
       id: 1,
-      text: "Exceptional Service Experience! I needed a last-minute plumber and Door2Day delivered. The professional arrived within an hour, fixed the issue quickly, and charged exactly what was quoted. Their team was responsive and the app made booking super easy!",
+      text: "Exceptional Service Experience! I needed a last-minute plumber and Sofa Upholstery delivered. The professional arrived within an hour, fixed the issue quickly, and charged exactly what was quoted. Their team was responsive and the app made booking super easy!",
       name: "Sarah M.",
       location: "Dubai"
     },
     {
       id: 2,
-      text: "Door2Day transformed my home renovation project! Finding reliable contractors used to be a nightmare, but their platform connected me with top-rated professionals. The service was outstanding - from the initial consultation to the final touches. Highly recommended!",
+      text: "Sofa Upholstery transformed my home renovation project! Finding reliable contractors used to be a nightmare, but their platform connected me with top-rated professionals. The service was outstanding - from the initial consultation to the final touches. Highly recommended!",
       name: "Ahmed K.",
       location: "Abu Dhabi"
     }
@@ -34,7 +34,7 @@ const HappyCustomers = () => {
           <div className="md:w-2/5 mb-8 md:mb-0 flex justify-center">
             <LazyImage
               src={happyCustomerImage}
-              alt="Happy Door2Day Customer"
+              alt="Happy Sofa Upholstery Customer"
               className="rounded-lg shadow-lg max-w-xs md:max-w-sm"
             />
           </div>

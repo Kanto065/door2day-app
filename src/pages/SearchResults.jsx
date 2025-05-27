@@ -5,6 +5,7 @@ import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import LazyImage from '../components/common/LazyImage';
 import apiService from '../services/api';
+import { formatPrice } from '../utils/currency';
 
 const SearchResults = () => {
   const location = useLocation();
@@ -266,8 +267,8 @@ const SearchResults = () => {
                         </div>
                         <div className="flex items-center justify-between">
                           <div>
-                            <span className="text-gray-500 line-through text-sm mr-2">${service.originalPrice}</span>
-                            <span className="text-primary font-semibold">${service.discountedPrice}</span>
+                            <span className="text-gray-500 line-through text-sm mr-2">{formatPrice(service.originalPrice)}</span>
+                            <span className="text-primary font-semibold">{formatPrice(service.discountedPrice)}</span>
                           </div>
                         </div>
                       </div>

@@ -11,8 +11,8 @@ const AppDownload = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-center">
           <div className="md:w-2/5 mb-8 md:mb-0 text-center md:text-left md:pr-8">
-            <h3 className="text-3xl font-bold text-white mb-4">Download for the door2day app</h3>
-            <p className="text-white/80 mb-6">Book unforgettable beauty and wellness experiences with the Door2Day mobile app!</p>
+            <h3 className="text-3xl font-bold text-white mb-4">Download for the Sofa Upholstery app</h3>
+            <p className="text-white/80 mb-6">Book unforgettable beauty and wellness experiences with the Sofa Upholstery mobile app!</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Link
@@ -44,7 +44,7 @@ const AppDownload = () => {
           <div className="md:w-2/5 flex justify-center">
             <LazyImage
               src={mobileMockup}
-              alt="Door2Day Mobile App"
+              alt="Sofa Upholstery Mobile App"
               className="max-w-xs md:max-w-sm"
             />
           </div>

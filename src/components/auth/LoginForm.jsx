@@ -39,7 +39,7 @@ const LoginForm = () => {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-bold text-center mb-6">Log In to Door2Day</h2>
+      <h2 className="text-2xl font-bold text-center mb-6">Log In to Sofa Upholstery</h2>
 
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">

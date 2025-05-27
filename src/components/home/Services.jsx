@@ -9,6 +9,14 @@ import serviceSalon from '../../assets/images/service-salon.jpg';
 import serviceHealthcare from '../../assets/images/service-healthcare.jpg';
 import serviceAC from '../../assets/images/service-ac.jpg';
 
+import service1 from '../../assets/images/service1.jpeg';
+import service2 from '../../assets/images/service2.jpeg';
+import service3 from '../../assets/images/service3.jpeg';
+import service4 from '../../assets/images/service4.jpeg';
+import service5 from '../../assets/images/service5.jpeg';
+import service6 from '../../assets/images/service6.jpeg';
+import service7 from '../../assets/images/service7.jpeg';
+
 const ServiceCard = ({ title, image, link }) => {
   return (
     <Link to="/services" className="block group">
@@ -52,26 +60,26 @@ const Services = () => {
   const fallbackServices = [
     {
       id: 1,
-      title: 'General Cleaning',
-      image: serviceCleaning,
+      title: 'Sofa Repair and Upholstery',
+      image: service1,
       link: '/services/cleaning'
     },
     {
       id: 2,
-      title: 'Salon & Spa at Home',
-      image: serviceSalon,
+      title: 'Chair Upholstery',
+      image: service2,
       link: '/services/salon'
     },
     {
       id: 3,
-      title: 'Healthcare Home',
-      image: serviceHealthcare,
+      title: 'Furniture Upholstery Services',
+      image: service3,
       link: '/services/healthcare'
     },
     {
       id: 4,
-      title: 'AC Cleaning',
-      image: serviceAC,
+      title: 'Curtains Sales and Installation',
+      image: service4,
       link: '/services/ac-cleaning'
     }
   ];

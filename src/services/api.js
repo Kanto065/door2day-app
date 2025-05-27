@@ -19,6 +19,20 @@ import newBeauty from '../assets/images/new-beauty.jpg';
 import newHaven from '../assets/images/new-haven.jpg';
 import newRefreshed from '../assets/images/new-refreshed.jpg';
 
+import service1 from '../assets/images/service1.jpeg';
+import service2 from '../assets/images/service2.jpeg';
+import service3 from '../assets/images/service3.jpeg';
+import service4 from '../assets/images/service4.jpeg';
+
+// Import images
+import service5 from '../assets/images/service5.jpeg';
+import service6 from '../assets/images/service6.jpeg';
+import service7 from '../assets/images/service7.jpeg';
+import service8 from '../assets/images/service8.jpeg';
+import service9 from '../assets/images/service9.jpeg';
+import service10 from '../assets/images/service10.jpeg';
+import service11 from '../assets/images/service11.jpeg';
+
 // Helper function for making API requests
 const fetchAPI = async (endpoint, options = {}) => {
   const url = `${API_URL}${endpoint}`;
@@ -30,7 +44,7 @@ const fetchAPI = async (endpoint, options = {}) => {
   };
 
   // Add auth token if available
-  const token = localStorage.getItem('door2day_token');
+  const token = localStorage.getItem('Sofa Upholstery_token');
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
@@ -74,26 +88,26 @@ const fetchAPI = async (endpoint, options = {}) => {
 const mockServices = [
   {
     id: 1,
-    title: 'General Cleaning',
-    image: serviceCleaning,
+    title: 'Sofa Repair and Upholstery',
+    image: service1,
     link: '/services/cleaning'
   },
   {
     id: 2,
-    title: 'Salon & Spa at Home',
-    image: serviceSalon,
+    title: 'Chair Upholstery',
+    image: service2,
     link: '/services/salon'
   },
   {
     id: 3,
-    title: 'Healthcare Home',
-    image: serviceHealthcare,
+    title: 'Furniture Upholstery Services',
+    image: service3,
     link: '/services/healthcare'
   },
   {
     id: 4,
-    title: 'AC Cleaning',
-    image: serviceAC,
+    title: 'Curtains Sales and Installation',
+    image: service4,
     link: '/services/ac-cleaning'
   }
 ];
@@ -101,129 +115,129 @@ const mockServices = [
 const mockTopPicks = [
   {
     id: 101,
-    title: 'Relax and Rejuvenate: Salon & Spa',
-    image: serviceRelax,
+    title: 'Premium Sofa Upholstery Service',
+    image: service5,
     rating: 4.8,
     reviews: 76,
-    originalPrice: 120,
-    discountedPrice: 99,
-    link: '/services/relax-spa'
+    originalPrice: 1200,
+    discountedPrice: 999,
+    link: '/services/premium-sofa'
   },
   {
     id: 102,
-    title: 'Flawless Nails, Right Fingertips',
-    image: serviceNails,
+    title: 'Expert Sofa Repair & Restoration',
+    image: service6,
     rating: 4.7,
     reviews: 58,
-    originalPrice: 80,
-    discountedPrice: 65,
-    link: '/services/nails'
+    originalPrice: 800,
+    discountedPrice: 650,
+    link: '/services/sofa-repair'
   },
   {
     id: 103,
-    title: 'Pamper Yourself: Salon & Spa',
-    image: servicePamper,
+    title: 'Custom Sofa Design & Making',
+    image: service7,
     rating: 4.9,
     reviews: 84,
-    originalPrice: 150,
-    discountedPrice: 120,
-    link: '/services/pamper-spa'
+    originalPrice: 1500,
+    discountedPrice: 1200,
+    link: '/services/custom-sofa'
   },
   {
     id: 104,
-    title: 'Revive at Home: Expert Salon',
-    image: serviceRevive,
+    title: 'Professional Sofa Refurbishment',
+    image: service8,
     rating: 4.8,
     reviews: 92,
-    originalPrice: 130,
-    discountedPrice: 110,
-    link: '/services/revive-salon'
+    originalPrice: 1300,
+    discountedPrice: 1100,
+    link: '/services/sofa-refurbishment'
   }
 ];
 
 const mockTrending = [
   {
     id: 201,
-    title: 'Tranquility Delivered: Salon & Spa',
-    image: trendingSpa,
+    title: 'Luxury Sofa Reupholstery',
+    image: service9,
     rating: 4.8,
     reviews: 76,
-    originalPrice: 120,
-    discountedPrice: 99,
-    link: '/services/tranquility-spa'
+    originalPrice: 1200,
+    discountedPrice: 999,
+    link: '/services/luxury-sofa'
   },
   {
     id: 202,
-    title: 'Home Cleaning for AC Cleaning',
-    image: trendingCleaning,
+    title: 'Vintage Sofa Restoration',
+    image: service10,
     rating: 4.7,
     reviews: 58,
-    originalPrice: 80,
-    discountedPrice: 65,
-    link: '/services/home-cleaning'
+    originalPrice: 800,
+    discountedPrice: 650,
+    link: '/services/vintage-sofa'
   },
   {
     id: 203,
-    title: 'Home Cleaning for AC Cleaning',
-    image: trendingAC,
+    title: 'Modern Sofa Design',
+    image: service11,
     rating: 4.9,
     reviews: 84,
-    originalPrice: 150,
-    discountedPrice: 120,
-    link: '/services/ac-cleaning'
+    originalPrice: 1500,
+    discountedPrice: 1200,
+    link: '/services/modern-sofa'
   },
   {
     id: 204,
-    title: 'Clean From Home: Professional',
-    image: trendingPro,
+    title: 'Sofa Repair & Maintenance',
+    image: service8,
     rating: 4.8,
     reviews: 92,
-    originalPrice: 130,
-    discountedPrice: 110,
-    link: '/services/pro-cleaning'
+    originalPrice: 1300,
+    discountedPrice: 1100,
+    link: '/services/sofa-maintenance'
   }
 ];
 
 const mockNewServices = [
   {
     id: 301,
-    title: 'Home Salon & Spa Services',
-    image: newSalon,
+    title: 'Premium Sofa Upholstery',
+    image: service7,
     rating: 4.8,
     reviews: 76,
-    originalPrice: 120,
-    discountedPrice: 99,
-    link: '/services/home-salon'
+    originalPrice: 1200,
+    discountedPrice: 999,
+    link: '/services/new-premium-sofa'
   },
   {
     id: 302,
-    title: 'Feel Beautiful, Stay Home! Salon',
-    image: newBeauty,
+    title: 'Expert Sofa Restoration',
+    image: service9,
     rating: 4.7,
     reviews: 58,
-    originalPrice: 80,
-    discountedPrice: 65,
-    link: '/services/beauty-salon'
+    originalPrice: 800,
+    discountedPrice: 650,
+    link: '/services/new-sofa-restoration'
   },
   {
     id: 303,
-    title: 'Beauty Haven: Salon & Spa',
-    image: newHaven,
+    title: 'Custom Sofa Design',
+    image: service7,
     rating: 4.9,
     reviews: 84,
-    originalPrice: 150,
-    discountedPrice: 120,
-    link: '/services/beauty-haven'
+    originalPrice: 1500,
+    discountedPrice: 1200,
+    link: '/services/new-custom-sofa'
   },
   {
     id: 304,
-    title: 'Refreshed: Home Salon & Spa',
-    image: newRefreshed,
+    title: 'Professional Sofa Repair',
+    image: service8,
     rating: 4.8,
     reviews: 92,
-    originalPrice: 130,
-    discountedPrice: 110,
-    link: '/services/refreshed-salon'
+    originalPrice: 1300,
+    discountedPrice: 1100,
+    link: '/services/new-sofa-repair'
   }
 ];
 

@@ -93,7 +93,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-gray-200 pt-6 text-center text-gray-500 text-sm">
-          <p>© 2023 door2day.com. All rights reserved.</p>
+          <p>© 2023 Sofa Upholstery.com. All rights reserved.</p>
         </div>
       </div>
     </footer>

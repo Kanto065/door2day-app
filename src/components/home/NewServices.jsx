@@ -3,6 +3,7 @@ import { FaStar } from 'react-icons/fa';
 import LazyImage from '../common/LazyImage';
 import apiService from '../../services/api';
 import { useService } from '../../context/ServiceContext';
+import { formatPrice } from '../../utils/currency';
 
 // Import images
 import newSalon from '../../assets/images/new-salon.jpg';
@@ -41,8 +42,8 @@ const ServiceCard = ({ id, title, image, rating, reviews, originalPrice, discoun
           </div>
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-gray-500 line-through text-sm mr-2">${originalPrice}</span>
-              <span className="text-primary font-semibold">${discountedPrice}</span>
+              <span className="text-gray-500 line-through text-sm mr-2">{formatPrice(originalPrice)}</span>
+              <span className="text-primary font-semibold">{formatPrice(discountedPrice)}</span>
             </div>
           </div>
         </div>
@@ -121,7 +122,7 @@ const NewServices = () => {
   return (
     <div className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-bold mb-6">New of Door2Day</h2>
+        <h2 className="text-2xl font-bold mb-6">New of Sofa Upholstery</h2>
 
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

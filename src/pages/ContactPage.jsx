@@ -77,7 +77,7 @@ const ContactPage = () => {
                   <div className="space-y-4">
                     <div className="flex items-start">
                       <FaMapMarkerAlt className="mt-1 mr-3" />
-                      <p>123 Door2Day Street, Suite 456<br />New York, NY 10001</p>
+                      <p>123 Sofa Upholstery Street, Suite 456<br />New York, NY 10001</p>
                     </div>
                     <div className="flex items-center">
                       <FaPhone className="mr-3" />
@@ -85,7 +85,7 @@ const ContactPage = () => {
                     </div>
                     <div className="flex items-center">
                       <FaEnvelope className="mr-3" />
-                      <p>bookings@door2day.com</p>
+                      <p>bookings@Sofa Upholstery.com</p>
                     </div>
                   </div>
 

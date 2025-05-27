@@ -4,6 +4,7 @@ import { FaStar } from 'react-icons/fa';
 import LazyImage from '../common/LazyImage';
 import apiService from '../../services/api';
 import { useService } from '../../context/ServiceContext';
+import { formatPrice } from '../../utils/currency';
 
 // Import images
 import serviceRelax from '../../assets/images/service-relax.jpg';
@@ -42,8 +43,8 @@ const ServiceCard = ({ id, title, image, rating, reviews, originalPrice, discoun
           </div>
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-gray-500 line-through text-sm mr-2">${originalPrice}</span>
-              <span className="text-primary font-semibold">${discountedPrice}</span>
+              <span className="text-gray-500 line-through text-sm mr-2">{formatPrice(originalPrice)}</span>
+              <span className="text-primary font-semibold">{formatPrice(discountedPrice)}</span>
             </div>
           </div>
         </div>

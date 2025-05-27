@@ -14,13 +14,13 @@ function AppContent() {
 
   // Show login modal when user first visits the site
   useEffect(() => {
-    const hasVisited = localStorage.getItem('door2day_visited');
+    const hasVisited = localStorage.getItem('Sofa Upholstery_visited');
 
     if (!hasVisited) {
       // Set a small delay to ensure the modal appears after the page loads
       const timer = setTimeout(() => {
         openAuthModal('login');
-        localStorage.setItem('door2day_visited', 'true');
+        localStorage.setItem('Sofa Upholstery_visited', 'true');
       }, 1500);
 
       return () => clearTimeout(timer);

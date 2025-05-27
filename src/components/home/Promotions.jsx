@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import LazyImage from '../common/LazyImage';
 
 // Import images
-import provider1 from '../../assets/images/provider1.jpg';
-import provider2 from '../../assets/images/provider2.jpg';
-import provider3 from '../../assets/images/provider3.jpg';
-import provider4 from '../../assets/images/provider4.jpg';
+import service1 from '../../assets/images/service1.jpeg';
+import service2 from '../../assets/images/service2.jpeg';
+import service3 from '../../assets/images/service3.jpeg';
+import service4 from '../../assets/images/service4.jpeg';
+import service5 from '../../assets/images/service5.jpeg';
+import service6 from '../../assets/images/service6.jpeg';
+import service7 from '../../assets/images/service7.jpeg';
 
 const PromotionCard = ({ color, title, image, link }) => {
   const bgColors = {
@@ -43,50 +46,50 @@ const Promotions = () => {
     {
       id: 1,
       color: 'orange',
-      title: 'Work with our best service provider',
-      image: provider1,
+      title: 'Sofa Repair and Upholstery',
+      image: service1,
       link: '/services/provider/1'
     },
     {
       id: 2,
       color: 'teal',
-      title: 'Work with our best service provider',
-      image: provider2,
+      title: 'Chair Upholstery',
+      image: service2,
       link: '/services/provider/2'
     },
     {
       id: 3,
       color: 'yellow',
-      title: 'Work with our best service provider',
-      image: provider3,
+      title: 'Furniture Upholstery Services',
+      image: service3,
       link: '/services/provider/3'
     },
     {
       id: 4,
       color: 'orange',
-      title: 'Work with our best service provider',
-      image: provider4,
+      title: 'Curtains Sales and Installation',
+      image: service4,
       link: '/services/provider/4'
     },
     {
       id: 5,
       color: 'teal',
-      title: 'Premium salon services at home',
-      image: provider2,
+      title: 'Sofa Making and Repair',
+      image: service5,
       link: '/services/provider/5'
     },
     {
       id: 6,
       color: 'yellow',
-      title: 'Special discount on spa treatments',
-      image: provider3,
+      title: 'Sofa Upholstery',
+      image: service6,
       link: '/services/provider/6'
     },
     {
       id: 7,
       color: 'orange',
-      title: 'Limited time offer on cleaning services',
-      image: provider1,
+      title: 'Custom Sofa Making',
+      image: service7,
       link: '/services/provider/7'
     }
   ];

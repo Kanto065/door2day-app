@@ -6,6 +6,7 @@ import Footer from '../components/layout/Footer';
 import { useAuth } from '../context/AuthContext';
 import apiService from '../services/api';
 import LazyVideo from '../components/common/LazyVideo';
+import { formatPrice } from '../utils/currency';
 
 const AdminServicePage = () => {
   const { user, isAuthenticated } = useAuth();
@@ -429,8 +430,8 @@ const AdminServicePage = () => {
                     <td className="py-3 px-4">{service.title}</td>
                     <td className="py-3 px-4">{service.category || 'N/A'}</td>
                     <td className="py-3 px-4">
-                      <span className="line-through text-gray-500 mr-2">${service.originalPrice}</span>
-                      <span className="text-primary font-semibold">${service.discountedPrice}</span>
+                      <span className="line-through text-gray-500 mr-2">{formatPrice(service.originalPrice)}</span>
+                      <span className="text-primary font-semibold">{formatPrice(service.discountedPrice)}</span>
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex space-x-2">

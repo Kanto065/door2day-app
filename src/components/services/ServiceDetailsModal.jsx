@@ -5,6 +5,7 @@ import LazyImage from '../common/LazyImage';
 import LazyVideo from '../common/LazyVideo';
 import apiService from '../../services/api';
 import serviceRelax from '../../assets/images/service-relax.jpg';
+import { formatPrice } from '../../utils/currency';
 
 const ServiceDetailsModal = ({ serviceId, onClose }) => {
   const [service, setService] = useState(null);
@@ -324,8 +325,8 @@ const ServiceDetailsModal = ({ serviceId, onClose }) => {
               <h2 className="text-xl font-semibold mb-2">Price</h2>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <span className="text-gray-500 line-through text-lg mr-2">${service.originalPrice}</span>
-                  <span className="text-primary font-bold text-2xl">${service.discountedPrice}</span>
+                  <span className="text-gray-500 line-through text-lg mr-2">{formatPrice(service.originalPrice)}</span>
+                  <span className="text-primary font-bold text-2xl">{formatPrice(service.discountedPrice)}</span>
                   <span className="ml-2 bg-green-100 text-green-800 text-xs px-2 py-1 rounded">
                     {Math.round((1 - service.discountedPrice / service.originalPrice) * 100)}% OFF
                   </span>

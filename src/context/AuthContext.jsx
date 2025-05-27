@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check if user is already logged in (e.g., from localStorage)
-    const storedUser = localStorage.getItem('door2day_user');
+    const storedUser = localStorage.getItem('Sofa Upholstery_user');
     if (storedUser) {
       try {
         const parsedUser = JSON.parse(storedUser);
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
       } catch (error) {
         console.error('Error parsing stored user:', error);
-        localStorage.removeItem('door2day_user');
+        localStorage.removeItem('Sofa Upholstery_user');
       }
     }
     setLoading(false);
@@ -31,8 +31,8 @@ export const AuthProvider = ({ children }) => {
     try {
       // In a real app, this would be an API call
       // For demo purposes, we'll simulate a successful login
-      // Check if this is an admin login (for demo purposes, admin@door2day.com)
-      const isAdmin = email.toLowerCase() === 'admin@door2day.com';
+      // Check if this is an admin login (for demo purposes, admin@sofaupholstery.com)
+      const isAdmin = email.toLowerCase() === 'admin@sofaupholstery.com' && password === 'admin@sofa';
       const userData = {
         id: 1,
         name: isAdmin ? 'Admin' : 'User',
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       };
       setUser(userData);
       setIsAuthenticated(true);
-      localStorage.setItem('door2day_user', JSON.stringify(userData));
+      localStorage.setItem('Sofa Upholstery_user', JSON.stringify(userData));
       return { success: true };
     } catch (error) {
       return { success: false, error: error.message };
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
       const userData = { id: 1, name, email };
       setUser(userData);
       setIsAuthenticated(true);
-      localStorage.setItem('door2day_user', JSON.stringify(userData));
+      localStorage.setItem('Sofa Upholstery_user', JSON.stringify(userData));
       return { success: true };
     } catch (error) {
       return { success: false, error: error.message };
@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
-    localStorage.removeItem('door2day_user');
+    localStorage.removeItem('Sofa Upholstery_user');
   };
 
   const openAuthModal = (mode = 'login') => {

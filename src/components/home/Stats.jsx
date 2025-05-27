@@ -3,7 +3,7 @@ const Stats = () => {
     {
       id: 1,
       value: '1 Billion +',
-      label: 'Appointments booked On Door2day'
+      label: 'Appointments booked On Sofa Upholstery'
     },
     {
       id: 2,
@@ -13,7 +13,7 @@ const Stats = () => {
     {
       id: 3,
       value: '120+ Countries',
-      label: 'Using Door2day'
+      label: 'Using Sofa Upholstery'
     },
     {
       id: 4,
