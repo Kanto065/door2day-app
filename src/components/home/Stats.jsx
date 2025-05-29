@@ -2,22 +2,22 @@ const Stats = () => {
   const stats = [
     {
       id: 1,
-      value: '1 Billion +',
+      value: '270+',
       label: 'Appointments booked On Sofa Upholstery'
     },
     {
       id: 2,
-      value: '110,00+',
+      value: '100+',
       label: 'Partner Businesses'
     },
     {
       id: 3,
-      value: '120+ Countries',
+      value: '5+ Countries',
       label: 'Using Sofa Upholstery'
     },
     {
       id: 4,
-      value: '450,000+',
+      value: '100+',
       label: 'Stylists And Professionals'
     }
   ];

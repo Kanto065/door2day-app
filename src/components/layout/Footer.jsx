@@ -11,9 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           <div>
             <span className="text-2xl font-bold mb-4 flex items-center cursor-default hover:opacity-80 transition-opacity">
-              <span className="text-primary">door</span>
-              <span className="text-secondary">2</span>
-              <span className="text-primary">day</span>
+              <img src="/logo.jpeg" alt="Logo" className="h-12 w-auto" />
             </span>
             <div className="mt-4">
               <h4 className="font-semibold mb-2">Download app</h4>
@@ -93,7 +91,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-gray-200 pt-6 text-center text-gray-500 text-sm">
-          <p>© 2023 Sofa Upholstery.com. All rights reserved.</p>
+          <p>© 2025 Sofa Upholstery.com. All rights reserved.</p>
         </div>
       </div>
     </footer>
