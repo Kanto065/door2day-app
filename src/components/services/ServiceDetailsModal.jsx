@@ -332,11 +332,13 @@ const ServiceDetailsModal = ({ serviceId, onClose }) => {
                   </span>
                 </div>
                 <Link
-                  to="/contact"
+                  to="https://wa.me/97470777467"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-black text-white px-6 py-2 rounded-md font-medium hover:bg-gray-800 transition inline-block text-center"
                   onClick={onClose}
                 >
-                  Book Now
+                  Call Now
                 </Link>
               </div>
             </div>

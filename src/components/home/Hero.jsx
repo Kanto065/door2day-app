@@ -105,7 +105,7 @@ const Hero = () => {
     <div className="relative">
       <Slider {...settings}>
         {services.map((service) => (
-          <div key={service.id} className="relative h-[400px]">
+          <div key={service.id} className="relative h-[300px]">
             <img
               src={service.image}
               alt="Service"
